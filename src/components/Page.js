@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Page = ({ page, setYear }) => {
+const Page = ({ page, getPhotos }) => {
 	function onBtnClick(e) {
 		const year = +e.currentTarget.innerText;
-		setYear(year);
+		getPhotos(year);
 	}
 
-	const { year, photos } = page;
+	const { year, photos, isFetching } = page;
 	return (
-		<div>
+		<div className="ib page">
 			<div>
 				<button onClick={onBtnClick}>2018</button>
 				<button onClick={onBtnClick}>2017</button>
@@ -16,9 +16,8 @@ const Page = ({ page, setYear }) => {
 				<button onClick={onBtnClick}>2015</button>
 				<button onClick={onBtnClick}>2014</button>
 			</div>
-			<p>
-				Do you have {photos.length} photos from {year}
-			</p>
+			<h3>{year} год</h3>
+			{isFetching ? <p>Загрузка...</p> : <p>У тебя {photos.length} фото.</p>}
 		</div>
 	);
 };

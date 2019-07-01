@@ -2,19 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import User from '../components/User';
 import Page from '../components/Page';
-import { setYear } from '../actions/PageActions';
+import { getPhotos } from '../actions/PageActions';
 
 class App extends React.Component {
 	render() {
-		const { user, page, setYearAction } = this.props;
+		const { user, page, getPhotosAction } = this.props;
 
 		return (
-			<div>
-				<header className="App-header">
-					<h1 className="App-title">Мой топ фото</h1>
+			<div className="row">
+				<header className="">
+					<h1 className="">Мой топ фото</h1>
 				</header>
 				<User user={user} />
-				<Page page={page} setYear={setYearAction} />
+				<Page page={page} getPhotos={getPhotosAction} />
 			</div>
 		);
 	}
@@ -29,7 +29,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		setYearAction: year => dispatch(setYear(year))
+		getPhotosAction: year => dispatch(getPhotos(year))
 	};
 };
 
